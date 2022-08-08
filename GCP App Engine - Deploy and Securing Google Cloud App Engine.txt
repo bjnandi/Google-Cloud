@@ -1,0 +1,22 @@
+1) sudo apt-get install google-cloud-sdk-app-engine-python
+
+2) git clone https://github.com/GoogleCloudPlatform/python-docs-samples/
+
+3) cd appengine/standard/hello_world/
+
+4) gcloud app deploy app.yaml[file name]--version= v2
+
+4) gcloud app deploy --version= v2
+
+5) gcloud app services set-traffic default --splits v1=.4,v2=.6
+
+
+Securing Google Cloud App Engine application using Identity-Aware Proxy::
+1) OAuth consent screen > External > create app
+2) Identity-Aware Proxy > IAP > True (can not login anyone)
+
+3) IAM> add Permissions > "User email" and "IAP-secured Web App User"
+
+4) Check user email on Identity-Aware Proxy App page
+
+5) Try to login and login with user email and see site

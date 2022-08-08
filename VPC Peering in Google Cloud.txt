@@ -1,0 +1,41 @@
+First Project:
+
+1) Create a custom network:
+	gcloud compute networks create network-a --subnet-mode custom
+
+2) Create a subnet within this VPC and specify a region and IP range by running:
+	gcloud compute networks subnets create network-a-central --network network-a --range 10.0.0.0/16 --region us-central1
+
+3) Create a VM instance:
+	gcloud compute instances create vm-a --zone us-central1-a --network network-a --subnet network-a-central
+
+4) Run the following to enable SSH and icmp, because you'll need a secure shell to communicate with VMs during connectivity testing:
+	gcloud compute firewall-rules create network-a-fw --network network-a --allow tcp:22,icmp
+
+5) Go VPC network peering and Create peering connection in two project
+
+6) Check using SSh 
+	ping 10.0.0.2
+	ping 35.225.0.89
+
+Second Project:
+
+Switch to the second cloud shell and create a custom network:
+
+1) Create a custom network:
+	gcloud compute networks create network-b --subnet-mode custom
+
+2) Create a subnet within this VPC and specify a region and IP range by running:
+	gcloud compute networks subnets create network-b-central --network network-b  --range 10.8.0.0/16 --region us-central1
+
+3) Create a VM instance:
+	gcloud compute instances create vm-b --zone us-central1-a --network network-b --subnet network-b-central
+
+4) Run the following to enable SSH and icmp, because you'll need a secure shell to communicate with VMs during connectivity testing:
+	gcloud compute firewall-rules create network-b-fw --network network-b --allow tcp:22,icmp
+	
+5) Go VPC network peering and Create peering connection in two project
+
+6) Check using SSh 
+	ping 10.8.0.2
+	ping 35.232.191.125

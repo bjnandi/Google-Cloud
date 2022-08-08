@@ -1,0 +1,51 @@
+1) Download
+	wget https://releases.hashicorp.com/packer/1.7.10/packer_1.7.10_linux_amd64.zip
+
+	uzip packer_1.7.10_linux_amd64
+
+2) Set pate
+	export PATE=/home/nbiswajit94/
+	echo $PATE
+	
+3) Check version
+	packer --version
+	
+4) Create a Service Account
+
+5) nano packer-demo.json	
+	
+	{
+	  "builders": [
+		{
+		  "type": "googlecompute",
+		  "account_file": "sa.json",
+		  "project_id": "bjn-project",
+		  "source_image": "debian-10-buster-v20220118",
+		  "ssh_username": "packer",
+		  "zone": "us-central1-a"
+		}
+	  ],
+	  
+		"provisioners" :[
+			{
+			  "type": "file",
+			  "source": "bj.log",
+			  "destination": "/tmp/bj.log"
+			},
+			{
+			  "type": "shell",
+			  "inline": "mv /tmp/bj.log /home/packer/"
+			}
+		  ]
+	}
+	
+6)  Create a log file for proof
+	nano bj.log  "create by bj"
+
+7) packer validate  packer-demo.json
+
+8) packer build  packer-demo.json
+
+9) See file for proof
+	cd /home/packer
+	cat bj.log

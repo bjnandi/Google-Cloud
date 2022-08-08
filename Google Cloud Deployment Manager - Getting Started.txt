@@ -1,0 +1,21 @@
+1) Create cloud-config.yaml file
+
+ resources:
+  - name: vm-created-by-deployment-manager
+    type: compute.v1.instance
+    properties:
+      zone: us-central1-a
+      machineType: zones/us-central1-a/machineTypes/n1-standard-1
+      disks:
+      - deviceName: boot
+        type: PERSISTENT
+        boot: true
+        autoDelete: true
+        initializeParams:
+          sourceImage: projects/debian-cloud/global/images/family/debian-9
+      networkInterfaces:
+      - network: global/networks/default
+
+2) gcloud deployment-manager deployments create my-first-deployment     --config cloud-config.yaml
+
+3) gcloud deployment-manager deployments delete my-first-deployment

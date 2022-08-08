@@ -1,0 +1,8 @@
+Step1: 	create public and private key on local computer
+	ssh-keygen
+
+Step2:  add metadata > ssh to remote desktop computer
+
+Step3:  ssh 34.105.45.139 (public IP of remote computer)
+	sudo apt update
+	sudo apt-get install nginx

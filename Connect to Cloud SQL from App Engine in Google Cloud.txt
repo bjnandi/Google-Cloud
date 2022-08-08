@@ -1,0 +1,34 @@
+1) Create Sql Instance
+
+2) Create databases
+
+3) Create User
+
+4) Open Cloud shell and check
+	gcloud sql connect sqldemo --user=bj
+	show databases;
+	use Demo
+	show tables;
+
+	create table demo_tbl(
+	   demo_id INT NOT NULL AUTO_INCREMENT,
+	   demo_txt VARCHAR(500) NOT NULL,
+	   PRIMARY KEY ( demo_id )
+	);
+
+	insert into demo_tbl(demo_id,demo_txt) values(1,"hello Biswajit, thanks for watching my video ");
+
+
+5) git clone https://github.com/cloudadvocate/google-cloud
+
+
+6) Change database and user information from app.yaml file
+
+7) Add sql query to main.py
+	select demo_txt from demo_tbl;
+
+8) Deploy app
+	gcloud app deploy
+	
+9) Browse app from url
+

@@ -1,0 +1,48 @@
+1) Create service account with set role
+	roles/editor
+	roles/compute.osAdminLogin 
+	roles/iam.serviceAccountUser
+
+
+
+2) install Python
+	sudo apt-get update
+	sudo apt install python3
+	sudo apt install python3-pip
+	
+23) install pip
+	curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+	python3 get-pip.py --user
+	
+4) install ansiable
+	pip3 install ansible
+	
+	
+5) pip3 install google-auth-oauthlib
+
+
+	gcloud config set account ansible123@bjn-project.iam.gserviceaccount.com
+
+	gcloud auth activate-service-account --key-file=ansible.json
+
+	gcloud config set compute/zone us-central1-c
+
+	ssh-keygen
+
+	gcloud compute os-login ssh-keys add --key-file .ssh/id_rsa.pub
+
+	cd /google-cloud/ansible-scripts# ansible-playbook main.yaml --user sa_118163283422654499870
+
+
+
+
+- name: copy multiple file
+  copy: src=files/{{ item }}  dest=/var/www/html/
+
+  with_items:
+  - css
+  - images
+  - js
+  - scripts
+  - index.html
+  - favicon.ico

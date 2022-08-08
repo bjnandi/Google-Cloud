@@ -1,0 +1,42 @@
+gcloud config list
+gcloud config configurations list
+gcloud config set account
+gcloud config set project my-project
+gcloud config set compute/zone us-central1-c
+gcloud config configurations create my-project
+gcloud config configurations create test-config --no active
+gcloud config configurations activate test-config
+
+
+gcloud compute instances list
+gcloud compute instances create ace-exam-123
+
+gcloud container clusters create ace-exam-2 --zone=us-west1-b --machine-type=n1-standard-1 --disk-size=100
+gcloud container clusters list
+
+
+
+gcloud components install  app-engine-python
+sudo apt-get install google-cloud-sdk-app-engine-python
+git clone https://github.com/GoogleCloudPlatform/python-docs-samples.git
+/python-docs-samples/appengine/standard/hello_world (bjn-project)$ gcloud app deploy app.yaml
+gcloud app browse
+
+Cloud functions::::::
+zip main.zip  main.py
+gsutil cp main.zip gs://ace-exam-3
+gcloud functions deploy hello_world --runtime=python37 --trigger-resource=ace-exam-3 --trigger-event=google.storage.object.finalize --source=gs://ace-exam-3/main.zip
+rm main.zip
+
+PubSub::::::
+gcloud pubsub topics create cs123
+gcloud pubsub subscriptions create cs123 --topic cs123
+gcloud pubsub subscriptions pull cs123 --limit 5
+
+gcloud projects get-iam-policy bjn-project --format json> ~/policy.json
+
+
+gsutil ls
+gsutil help
+gsutil mb gs://ace-cloud-engineer-bucket-8737239
+gsutil -m cp -r gs://cp-test12346 test123
